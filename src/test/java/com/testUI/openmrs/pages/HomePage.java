@@ -1,4 +1,4 @@
 package com.testUI.openmrs.pages;
 
-public class MainPage {
+public class HomePage {
 }
