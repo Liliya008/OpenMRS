@@ -1,0 +1,2 @@
+file:src/test/resources/features/openmrs/KAN-8_findPatientRecord.feature:8:14
+file:src/test/resources/features/openmrs/LoginFunctionality.feature:3:15:16:17
