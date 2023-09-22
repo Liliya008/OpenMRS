@@ -22,7 +22,7 @@ public class PatientRecordPage {
     @FindBy(css = ".dataTables_info")
     private WebElement patientAmount;
 
-    @FindBy(css = ".dataTables_empty")
+    @FindBy(xpath = "//td[.='No matching records found']")
     private WebElement notificationMessage;
 
     public void nameInput(String name) {
@@ -33,11 +33,11 @@ public class PatientRecordPage {
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement text =wait.until(ExpectedConditions.visibilityOf(patientAmount));
         BrowserUtils.scrollWithJS(driver,patientAmount);
-       // Assert.assertTrue(BrowserUtils.getText(patientAmount).contains(amount));
+       Assert.assertTrue(BrowserUtils.getText(patientAmount).contains(amount));
     }
     public void messageValidation(WebDriver driver,String massage){
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement text =wait.until(ExpectedConditions.visibilityOf(notificationMessage));
-       // Assert.assertEquals(massage,BrowserUtils.getText(notificationMessage));
+       Assert.assertTrue(BrowserUtils.getText(notificationMessage).contains(massage));
     }
 }
