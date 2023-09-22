@@ -43,6 +43,10 @@ registerPatientPage.chooseGender(gender);
 registerPatientPage.clickNextButton();
 registerPatientPage.clickConfirmButton();
     }
+    @Then("User validate successful  Message {string}")
+    public void userValidateSuccessfulMessage(String expectedMessage) throws InterruptedException {
+       patientPage.validateRecordMessage(expectedMessage);
+    }
 
 
 }

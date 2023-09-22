@@ -12,11 +12,12 @@ public class PatientPage {
     public PatientPage(WebDriver driver){
         PageFactory.initElements(driver,this);
     }
-    @FindBy(xpath = "/div/div/p")
-    private WebElement successUnidentifiedMessage;
-    public void validateSuccessUnidentifiedMessage(String expectedMessage) throws InterruptedException {
-        Thread.sleep(4000);
-        Assert.assertEquals(expectedMessage, BrowserUtils.getText(successUnidentifiedMessage));
+
+    @FindBy(xpath = "//div[@class='unknown-patient col-12 mt-2']")
+    private WebElement recordMessage;
+
+    public  void validateRecordMessage(String expectedMessage) throws InterruptedException {
+        Assert.assertTrue(BrowserUtils.getText(recordMessage).contains(expectedMessage));
     }
 
 }
