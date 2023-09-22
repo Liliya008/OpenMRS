@@ -12,6 +12,13 @@ public class HomePage {
     @FindBy(xpath = "//div[@id='apps']//a[4]")
     private WebElement registerPatientButton;
 
+    @FindBy (css = "#coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension")
+    private WebElement findPatientRecordButton;
+    public void findPatientButton(){
+        findPatientRecordButton.click();
+    }
+
+
 
 
 
