@@ -34,4 +34,52 @@ public class RegisterPatientPage {
         confirmButton.click();
         Thread.sleep(3000);
     }
+
+
+//public class RegisterPatientPage {
+//    public RegisterPatientPage(WebDriver driver){
+//        PageFactory.initElements(driver,this);
+//    }
+//    @FindBy (xpath = "//input[@name='givenName']")
+//    private WebElement newPatientGivenName;
+//    @FindBy (xpath = "//input[@name='familyName']")
+//    private WebElement newPatientFamilyName;
+//
+//    @FindBy(css = "#next-button")
+//    private WebElement nextButton;
+//
+//    @FindBy(xpath = "//select[@id = 'gender-field']")
+//    private WebElement selectGender;
+//    @FindBy(xpath = "//input[@id='birthdateDay-field']")
+//    private WebElement dateOfBirth;
+//    @FindBy(xpath = "//select[@id='birthdateMonth-field']")
+//    private WebElement monthOfBirth;
+//    @FindBy(xpath = "//input[@id='birthdateYear-field']")
+//    private WebElement yearOfBirth;
+//    @FindBy(css = "#address1")
+//    private WebElement addressField;
+//    @FindBy(xpath = "//input[@name='phoneNumber']")
+//    private WebElement phoneNumberField;
+//    @FindBy(xpath = "//select[@id='relationship_type']")
+//    private WebElement relationshipType;
+//    @FindBy(xpath = "//span[contains(text(),'Name:')]")
+//    private WebElement displayedName;
+//    @FindBy(xpath = "//span[contains(text(),'Gender:')]")
+//    private WebElement displayedGender;
+//    @FindBy(xpath = "//span[contains(text(),'Birthdate: ')]")
+//    private WebElement displayedBirthday;
+//    @FindBy(xpath = "//span[contains(text(),'Address: ')]")
+//    private WebElement displayedAddress;
+//    @FindBy(xpath = "//span[contains(text(),'Phone Number:')]")
+//    private WebElement displayedPhoneNumber;
+//    @FindBy(xpath = "//span[contains(text(),'Relatives: ')]")
+//    private WebElement displayedRelatives;
+//    @FindBy(css = "#submit")
+//    private WebElement confirmButton;
+//
+//
+//
+//
+//
+//>>>>>>> Stashed changes
 }
