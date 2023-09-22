@@ -1,4 +1,4 @@
-@regression
+
 Feature: Testing Login Functionality for OpenMrs
   Scenario: Positive scenario with valid credentials
     When User provides username and password
