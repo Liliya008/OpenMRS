@@ -11,7 +11,11 @@ public class MainPage {
 
     }
 
-    @FindBy()
+    @FindBy(css = ".icon-search")
     private WebElement findPatientRecordButton;
+
+    public void clickFindPatientRecord(){
+        findPatientRecordButton.click();
+    }
 
 }
