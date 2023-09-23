@@ -12,6 +12,13 @@ public class RegisterPatientPage {
     }
     @FindBy(css = "#checkbox-unknown-patient")
     private WebElement unidentifiedPatientCheckBox;
+    @FindBy (xpath = "//input[@name='givenName']")
+//    private WebElement newPatientGivenName;
+//    @FindBy (xpath = "//input[@name='familyName']")
+//    private WebElement newPatientFamilyName;
+//
+//    @FindBy(css = "#next-button")
+//    private WebElement nextButton;
     @FindBy(xpath = "//select[@id='gender-field']")
     private WebElement patientGender;
     @FindBy(xpath = "//button[@id='next-button']")
