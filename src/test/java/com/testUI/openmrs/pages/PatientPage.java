@@ -29,8 +29,17 @@ public class PatientPage {
     private WebElement patientFirstName;
     @FindBy(css = ".PersonName-familyName")
     private WebElement patientLastName;
-    @FindBy(css = "//span[.='100LTM']")
-    private WebElement id;
+
+    @FindBy(xpath = "//a//img")
+    private WebElement homePageIcon;
+    public void verifyingPatientInfoDisplayed(){
+        Assert.assertTrue(patientFirstName.isDisplayed());
+        Assert.assertTrue(patientLastName.isDisplayed());
+    }
+    public void clickHomePage(){
+        homePageIcon.click();
+    }
+
 
 
 }

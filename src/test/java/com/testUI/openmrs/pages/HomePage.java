@@ -11,6 +11,10 @@ public class HomePage {
     }
     @FindBy(xpath = "//div[@id='apps']//a[4]")
     private WebElement registerPatientButton;
+registerPatientRevised
+    @FindBy(xpath = "//div[@id='apps']//a[1]")
+    private WebElement findPatientRecordButton;
+
 
     @FindBy (css = "#coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension")
     private WebElement findPatientRecordButton;
@@ -19,14 +23,11 @@ public class HomePage {
     }
 
 
-
-
-
-
-
-
     public void chooseRegisterPatient(){
         registerPatientButton.click();
+    }
+    public void chooseFindPatientRecord(){
+        findPatientRecordButton.click();
     }
 
 
