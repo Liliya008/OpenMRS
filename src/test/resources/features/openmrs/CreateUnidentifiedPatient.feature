@@ -1,4 +1,4 @@
-@regression
+
 Feature: Validating Unidentified Patient Creation in OpenMrs
   Background:
   Given User successfully logged in to the OpenMrs website

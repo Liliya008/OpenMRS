@@ -14,6 +14,8 @@ public class HomePage {
 
     @FindBy (css = "#coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension")
     private WebElement findPatientRecordButton;
+
+
     public void findPatientButton(){
         findPatientRecordButton.click();
     }

@@ -1,4 +1,4 @@
-@regression
+
 Feature: Testing Register new patient functionality
   Scenario Outline: Positive scenario for creating new patient
     When User logged in, clicks register a patient button

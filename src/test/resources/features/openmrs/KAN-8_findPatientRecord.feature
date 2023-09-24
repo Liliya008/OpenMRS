@@ -1,4 +1,4 @@
-@regression
+
 Feature: Testing patient record functionality on OpenMRS website
   Background:  patient records
     Given User is successfully logged in with valid.
