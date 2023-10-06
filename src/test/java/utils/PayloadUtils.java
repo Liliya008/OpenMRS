@@ -1,18 +1,21 @@
 package utils;
 
+import com.github.javafaker.Faker;
+
 public class PayloadUtils {
 
-    public static String getPersonPayload(String givenName, String familyName,
-                                          String birthday, String address, String city, String country){
-        String personPayload = "{\n" +
+    public static String getPersonPayload( ){
+        Faker name = new Faker();
+
+        String personPayload ="{\n" +
                 "\n" +
                 "    \"names\": [\n" +
                 "\n" +
                 "        {\n" +
                 "\n" +
-                "        \"givenName\": \""+givenName+"\",\n" +
+                "        \"givenName\": \""+name.name().firstName()+"\",\n" +
                 "\n" +
-                "        \"familyName\": \""+familyName+"\"\n" +
+                "        \"familyName\": \""+name.name().lastName()+"\"\n" +
                 "\n" +
                 "        }\n" +
                 "\n" +
@@ -20,19 +23,19 @@ public class PayloadUtils {
                 "\n" +
                 "    \"gender\": \"M\",\n" +
                 "\n" +
-                "    \"birthdate\": \""+birthday+"\",\n" +
+                "    \"birthdate\": \"1997-06-02\",\n" +
                 "\n" +
                 "    \"addresses\": [\n" +
                 "\n" +
                 "        {\n" +
                 "\n" +
-                "        \"address1\": \""+address+"\",\n" +
+                "        \"address1\": \"1 Kiev\",\n" +
                 "\n" +
-                "        \"cityVillage\": \""+city+"\",\n" +
+                "        \"cityVillage\": \""+name.address().city()+"\",\n" +
                 "\n" +
-                "        \"country\": \""+country+"\",\n" +
+                "        \"country\": \"USA\",\n" +
                 "\n" +
-                "        \"postalCode\": \"89003\"\n" +
+                "        \"postalCode\": \""+name.address().zipCode()+"\"\n" +
                 "\n" +
                 "        }\n" +
                 "\n" +
