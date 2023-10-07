@@ -4,18 +4,18 @@ import com.github.javafaker.Faker;
 
 public class PayloadUtils {
 
-    public static String getPersonPayload( ){
+    public static String getPersonPayload() {
         Faker name = new Faker();
 
-        String personPayload ="{\n" +
+        String personPayload = "{\n" +
                 "\n" +
                 "    \"names\": [\n" +
                 "\n" +
                 "        {\n" +
                 "\n" +
-                "        \"givenName\": \""+name.name().firstName()+"\",\n" +
+                "        \"givenName\": \"" + name.name().firstName() + "\",\n" +
                 "\n" +
-                "        \"familyName\": \""+name.name().lastName()+"\"\n" +
+                "        \"familyName\": \"" + name.name().lastName() + "\"\n" +
                 "\n" +
                 "        }\n" +
                 "\n" +
@@ -31,11 +31,11 @@ public class PayloadUtils {
                 "\n" +
                 "        \"address1\": \"1 Kiev\",\n" +
                 "\n" +
-                "        \"cityVillage\": \""+name.address().city()+"\",\n" +
+                "        \"cityVillage\": \"" + name.address().city() + "\",\n" +
                 "\n" +
                 "        \"country\": \"USA\",\n" +
                 "\n" +
-                "        \"postalCode\": \""+name.address().zipCode()+"\"\n" +
+                "        \"postalCode\": \"" + name.address().zipCode() + "\"\n" +
                 "\n" +
                 "        }\n" +
                 "\n" +
@@ -43,5 +43,47 @@ public class PayloadUtils {
                 "\n" +
                 "}";
         return personPayload;
+    }
+
+    public static String getPersonPayloadNegative() {
+
+        Faker name = new Faker();
+
+        String personPayloadNegative = "{\n" +
+                "\n" +
+                "    \"names\": [\n" +
+                "\n" +
+                "        {\n" +
+                "\n" +
+                "        \"givenName\": \"\",\n" +
+                "\n" +
+                "        \"familyName\": \"" + name.name().lastName() + "\"\n" +
+                "\n" +
+                "        }\n" +
+                "\n" +
+                "    ],\n" +
+                "\n" +
+                "    \"gender\": \"M\",\n" +
+                "\n" +
+                "    \"birthdate\": \"1997-06-02\",\n" +
+                "\n" +
+                "    \"addresses\": [\n" +
+                "\n" +
+                "        {\n" +
+                "\n" +
+                "        \"address1\": \"1 Kiev\",\n" +
+                "\n" +
+                "        \"cityVillage\": \"" + name.address().city() + "\",\n" +
+                "\n" +
+                "        \"country\": \"USA\",\n" +
+                "\n" +
+                "        \"postalCode\": \"" + name.address().zipCode() + "\"\n" +
+                "\n" +
+                "        }\n" +
+                "\n" +
+                "    ]\n" +
+                "\n" +
+                "}";
+        return personPayloadNegative;
     }
 }

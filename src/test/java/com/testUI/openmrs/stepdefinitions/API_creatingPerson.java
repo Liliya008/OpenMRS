@@ -1,5 +1,6 @@
 package com.testUI.openmrs.stepdefinitions;
 
+import com.testUI.openmrs.api.pojo.OpenMRSPojo;
 import com.testUI.openmrs.pages.LoginPage;
 import io.cucumber.java.en.*;
 import io.restassured.RestAssured;
@@ -13,7 +14,6 @@ import utils.PayloadUtils;
 public class API_creatingPerson {
 
     WebDriver driver = DriverHelper.getDriver();
-    LoginPage loginPage = new LoginPage(driver);
     Response response;
 
     @Given("user has OpenMRS endpoint")
@@ -33,8 +33,13 @@ public class API_creatingPerson {
 
     }
 
-    @Then("I should get the status code {int}")
-    public void i_should_get_the_status_code(int expectedStatusCode) {
+    @Then("I should get the status code {int} and birthdate {string}")
+    public void i_should_get_the_status_code_and_birthdate(int expectedStatusCode, String expectedBirthdate) {
+        OpenMRSPojo parsedResponse = response.as(OpenMRSPojo.class);
         Assert.assertEquals(expectedStatusCode,response.statusCode());
+        Assert.assertTrue(parsedResponse.getBirthdate().contains(expectedBirthdate));
+
+        System.out.println(parsedResponse.getBirthdate());//1997-06-02T00:00:00.000+0000
+
     }
 }
