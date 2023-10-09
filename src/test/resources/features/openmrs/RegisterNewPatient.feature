@@ -1,5 +1,6 @@
 @regression
 Feature: Testing Register new patient functionality
+
   Scenario Outline: Positive scenario for creating new patient
     When User logged in, clicks register a patient button
     And User enters '<givenName>', '<familyName>' and clicks next button
@@ -13,9 +14,9 @@ Feature: Testing Register new patient functionality
     And User clicks on home page and choose find patient record button
     Then User enter his '<fullName>' in search bar and validate his id is unique
     Examples:
-    |givenName|familyName|gender|date|month|year|address|phoneNumber|relationshipType|name|fullName|birthday|
-    |Adam     |White     |Male  |8   |May  |1995|100 Main St|12345  |Doctor          |John|Adam, White|8, May, 1995|
-    |Jessica     |Black    |Female  |15 |June  |1999|100 Main St|12325  |Parent          |Adam|Jessica, Black|15, June, 1999|
+      | givenName | familyName | gender | date | month | year | address     | phoneNumber | relationshipType | name | fullName       | birthday       |
+      | Adam      | White      | Male   | 8    | May   | 1995 | 100 Main St | 12345       | Doctor           | John | Adam, White    | 8, May, 1995   |
+      | Jessica   | Black      | Female | 15   | June  | 1999 | 100 Main St | 12325       | Parent           | Adam | Jessica, Black | 15, June, 1999 |
 
 
 

@@ -1,3 +1,13 @@
+<<<<<<< Updated upstream
 .idea
 target
 *iml
+=======
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+/configuration.properties
+.idea
+target/
+*.iml
+>>>>>>> Stashed changes

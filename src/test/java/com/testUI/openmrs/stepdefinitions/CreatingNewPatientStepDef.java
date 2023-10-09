@@ -40,11 +40,14 @@ public class CreatingNewPatientStepDef {
         registerPatientPage.clickNextButton();
     }
     @When("User enters his {string} and clicks next button")
-    public void userEntersHisAndClicksNextButton(String string) {
+    public void userEntersHisAndClicksNextButton(String address) {
+        registerPatientPage.addressInput(address);
+        registerPatientPage.phoneNumberInput("608-223-23-234");
 
     }
     @When("User chooses his {string}, enter the {string} and clicks next button")
-    public void userChoosesHisEnterTheAndClicksNextButton(String string, String string2) {
+    public void userChoosesHisEnterTheAndClicksNextButton(WebDriver driver,String relationship, String nameRelationship) throws InterruptedException {
+        registerPatientPage.selectRelationship(driver,relationship,nameRelationship);
 
     }
     @When("User validate his {string},{string},{string},{string},{string},{string} is displayed and clicks confirm button")
@@ -55,12 +58,12 @@ public class CreatingNewPatientStepDef {
     @When("User validate his {string} and {string} is displayed on his page")
     public void userValidateHisAndIsDisplayedOnHisPage(String firstName, String lastName) {
         patientPage.verifyingPatientInfoDisplayed();
-        patientPage.clickHomePage();
+
 
     }
     @When("User clicks on home page and choose find patient record button")
     public void userClicksOnHomePageAndChooseFindPatientRecordButton() {
-
+        patientPage.clickHomePage();
     }
     @Then("User enter his {string} in search bar and validate his id is unique")
     public void userEnterHisInSearchBarAndValidateHisIdIsUnique(String string) {
