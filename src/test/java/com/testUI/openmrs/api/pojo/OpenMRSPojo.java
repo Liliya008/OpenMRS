@@ -12,4 +12,5 @@ import java.util.List;
 public class OpenMRSPojo {
     private List<String> names;
     private String birthdate;
+    private String uuid;
 }
