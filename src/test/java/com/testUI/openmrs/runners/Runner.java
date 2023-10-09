@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features/openmrs",// features files location
         glue = "com/testUI/openmrs/stepdefinitions", // step definitions files location
-        dryRun = false,
+        dryRun =false,
         tags = "@regression",
         plugin = {"pretty","html:target/uiReport.html","rerun:target/uiFailedTests.txt",
                 "json:target/cucumber-reports/cucumber.json"},
