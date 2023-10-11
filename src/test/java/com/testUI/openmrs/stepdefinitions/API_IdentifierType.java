@@ -12,7 +12,7 @@ private Response response;
     @Given("User has the endpoint")
     public void user_has_the_endpoint() {
 
-        RestAssured.baseURI = "http://18.118.139.162/openmrs";
+        RestAssured.baseURI = "http://codefish.ninja/openmrs";
         RestAssured.basePath = "ws/rest/v1/patientidentifiertype";
     }
     @When("User sends GET request")
