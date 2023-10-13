@@ -1,6 +1,9 @@
 package utils;
 
 import com.github.javafaker.Faker;
+import com.testUI.openmrs.api.pojo.OpenMRSPojo;
+import com.testUI.openmrs.stepdefinitions.API_CreatePatientID;
+import com.testUI.openmrs.stepdefinitions.API_creatingPerson;
 
 public class PayloadUtils {
 
@@ -85,5 +88,22 @@ public class PayloadUtils {
                 "\n" +
                 "}";
         return personPayloadNegative;
+    }
+    public static String getPatientPayload() {
+        API_CreatePatientID api_createPatientID = new API_CreatePatientID();
+        OpenMRSPojo openMRSPojo = new OpenMRSPojo();
+
+
+        String patientPayload = "{\n" +
+                "\"identifiers\":[\n" +
+                "    {\n" +
+                "     \"identifier\":\""+api_createPatientID.getId()+"\",\n" +
+                "     \"identifierType\":\"05a29f94-c0ed-11e2-94be-8c13b969e334\",\n" +
+                "     \"location\":\"7f65d926-57d6-4402-ae10-a5b3bcbf7986\",\n" +
+                "     \"preferred\":true\n" +
+                "    }],\n" +
+                "\"person\":\""+openMRSPojo.getUuid()+"\"\n" +
+                "}";
+        return patientPayload;
     }
 }

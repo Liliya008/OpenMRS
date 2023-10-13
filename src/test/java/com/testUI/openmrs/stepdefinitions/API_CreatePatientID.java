@@ -15,6 +15,14 @@ import java.util.Objects;
 
 public class API_CreatePatientID {
     private Response response;
+    private String id;
+
+
+
+    public String getId() {
+        return id;
+    }
+
     @Given("The user has endpoint")
     public void theUserHasEndpoint() {
         RestAssured.baseURI = "http://18.118.139.162";
@@ -33,11 +41,12 @@ public class API_CreatePatientID {
         Assert.assertEquals(expectedStatusCode,actualStatusCode);
 
     }
-    @Then("The user got {string}")
-    public void theUserGot(String patientId) {
+    @Then("The user got ID")
+    public void theUserGot() {
        Map<String,Object> parsedResponse = response.as(new TypeRef<Map<String,Object>>() {});
        List<String> identifiers = (List<String>) parsedResponse.get("identifiers");
-       patientId = identifiers.get(0);
+       id = identifiers.get(0);
+
     }
 
 }

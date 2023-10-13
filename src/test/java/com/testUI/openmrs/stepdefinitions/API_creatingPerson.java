@@ -16,6 +16,7 @@ public class API_creatingPerson {
     WebDriver driver = DriverHelper.getDriver();
     Response response;
 
+
     @Given("user has OpenMRS endpoint")
     public void user_has_open_mrs_endpoint() {
         RestAssured.baseURI = "http://18.118.139.162/openmrs";
@@ -40,6 +41,8 @@ public class API_creatingPerson {
         Assert.assertTrue(parsedResponse.getBirthdate().contains(expectedBirthdate));
 
         System.out.println(parsedResponse.getBirthdate());//1997-06-02T00:00:00.000+0000
+
+
 
     }
 }
