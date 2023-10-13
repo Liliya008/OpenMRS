@@ -1,0 +1,142 @@
+package com.testUI.openmrs.api.pojo;
+
+import io.restassured.RestAssured;
+import io.restassured.common.mapper.TypeRef;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.Assert;
+import utils.PayLoadsUtils;
+
+import java.text.ParseException;
+import java.util.List;
+import java.util.Map;
+
+public class RegisterPatientAPI {
+    private Response postPersonResponse;
+    private Response getIDTypeResponse;
+    private Response getLocationResponse;
+    private Response getPatientIdResponse;
+    private Response postPatientResponse;
+    private String name;
+    private String lastname;
+    private String gender;
+    private String birthdate;
+    private String address1;
+    private static String personID;
+    private String idType;
+    private String locationID;
+    private String patientID;
+    private Integer statusCode;
+    public static String patientUUID;
+
+    public static String getPersonID() {
+        return personID;
+    }
+
+    public static String getPatientUUID() {
+        return patientUUID;
+    }
+
+    public void postPerson(String name, String lastname, String gender, String dob, String add1, String add2, String city, String state, String country, String zip) {
+        postPersonResponse =
+                RestAssured.given()
+                        .header("Authorization", "Basic QWRtaW46QWRtaW4xMjM=")
+                        .contentType(ContentType.JSON)
+                        .accept(ContentType.JSON)
+                        .body(PayLoadsUtils.newPersonPayLoad(name, lastname, gender, dob, add1, city, state, country, zip))
+                        .when().post();
+        this.name = name;
+        this.lastname = lastname;
+        this.gender = gender;
+        this.birthdate = dob;
+        this.address1 = add1;
+        personID = postPersonResponse.as(new TypeRef<Map<String, Object>>() {
+        }).get("uuid").toString();
+        statusCode = postPersonResponse.getStatusCode();
+    }
+
+    public void validateStatusCode(Integer expected) {
+//        Integer actualStatusCode=statusCode;
+        Assert.assertEquals(expected, statusCode);
+    }
+
+    public void validateResponseInfoForPostPerson(String postedDate) throws ParseException {
+        Map<String, Object> deserializedResponse = postPersonResponse.as(new TypeRef<Map<String, Object>>() {
+        });
+        Assert.assertEquals(name + " " + lastname, deserializedResponse.get("display").toString());
+        Assert.assertEquals(gender, deserializedResponse.get("gender").toString());
+        Map<String, Object> responseAddress1 = (Map<String, Object>) deserializedResponse.get("preferredAddress");
+        Assert.assertEquals(address1, responseAddress1.get("display"));
+//        Integer age=(Integer) deserializedResponse.get("age");
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+//        Date posted=simpleDateFormat.parse(postedDate);
+//        Date date=new Date();
+//        long time_difference = date.getTime() - posted.getTime();
+//        long years_difference = (time_difference / (1000l*60*60*24*365));
+//        Assert.assertEquals(years_difference,(long)age);
+    }
+
+    public void getIdType() {
+
+        getIDTypeResponse =
+                RestAssured.given()
+                        .header("Authorization", "Basic QWRtaW46QWRtaW4xMjM=")
+                        .accept(ContentType.JSON)
+                        .contentType(ContentType.JSON)
+                        .when().get();
+        Map<String, Object> deserializedResponse = getIDTypeResponse.as(new TypeRef<Map<String, Object>>() {
+        });
+        List<Map<String, Object>> result = (List<Map<String, Object>>) deserializedResponse.get("results");
+        idType = result.get(0).get("uuid").toString();
+        statusCode = getIDTypeResponse.getStatusCode();
+    }
+
+    public void getLocation() {
+
+        getLocationResponse =
+                RestAssured.given()
+                        .header("Authorization", "Basic QWRtaW46QWRtaW4xMjM=")
+                        .accept(ContentType.JSON)
+                        .contentType(ContentType.JSON)
+                        .when().get();
+        Map<String, List> deserializedResponse = getLocationResponse.as(new TypeRef<Map<String, List>>() {
+        });
+        Map<String, Object> results = (Map<String, Object>) deserializedResponse.get("results").get(0);
+        locationID = results.get("uuid").toString();
+        statusCode = getLocationResponse.getStatusCode();
+    }
+
+    public void getID() {
+
+        getPatientIdResponse =
+                RestAssured.given()
+                        .queryParam("source", "1")
+                        .queryParam("username", "Admin")
+                        .queryParam("password", "Admin123")
+                        .accept(ContentType.JSON)
+                        .contentType(ContentType.JSON)
+                        .when().get();
+        Map<String, List> deserializedResponse = getPatientIdResponse.as(new TypeRef<Map<String, List>>() {
+        });
+        patientID = deserializedResponse.get("identifiers").get(0).toString();
+        statusCode = getPatientIdResponse.getStatusCode();
+    }
+
+    public void postPatient () {
+
+        postPatientResponse=
+                RestAssured.given()
+                        .header("Authorization","Basic QWRtaW46QWRtaW4xMjM=")
+                        .contentType(ContentType.JSON)
+                        .accept(ContentType.JSON)
+                        .body(PayLoadsUtils.postPatientPayload(personID,patientID,idType,locationID))
+                        .when().post()
+                        .then()
+                        .statusCode(201)
+                        .extract().response();
+        Map<String,Object>patientInfoMap=postPatientResponse.as(new TypeRef<Map<String,Object>>() {
+        });
+        List<Map<String,Object>>patientIDList=(List<Map<String,Object>>)patientInfoMap.get("identifiers");
+        patientUUID=(String)patientIDList.get(0).get("uuid");
+    }
+}

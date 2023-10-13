@@ -2,7 +2,7 @@ package utils;
 
 public class PayLoadsUtils {
 
-        public static String newPersonPayLoad(String firstName, String lastName,String gender,String birthDay,String address,String city,String country,String zipCode){
+        public static String newPersonPayLoad(String firstName, String lastName, String gender, String birthDay, String address, String city, String country, String zipCode, String zip){
             String newPersonPayLoad = "{\n" +
                     "\n" +
                     "    \"names\": [\n" +
@@ -40,4 +40,22 @@ public class PayLoadsUtils {
                     "}";
             return newPersonPayLoad;
         }
+
+    public static String postPatientPayload(String person_ID,String id,String idType,String location){
+
+        String payload="{\n" +
+                " \n" +
+                "    \"identifiers\": [\n" +
+                "        {\n" +
+                "          \"identifier\":\""+id+"\", \n" +
+                "          \"identifierType\":\""+idType+"\", \n" +
+                "          \"location\":\""+location+"\",\n" +
+                "          \"preferred\":true\n" +
+                "        } ],\n" +
+                "    \"person\":\""+person_ID+"\"\n" +
+                " \n" +
+                "}";
+
+        return payload;
+    }
     }
